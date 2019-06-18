@@ -1,15 +1,16 @@
+
 var express = require('express');
 var exphbs = require('express-handlebars');
 var morgan = require('morgan');
-var path = require('path')
+//var path = require('path')
+
 
 var app = express();
 
-
+app.use(require('./middlewares/locals.mdw'));
 app.use(express.static(__dirname + '/public'));
 
 
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,13 +23,11 @@ app.set('view engine', 'hbs');
 
 //app.use(require('./middlewares/locals.mdw'));
 
-app.get('/', (req, res) => {
-  res.render('home');
-})
+app.get('/',require('./routes/home/home.route'));
 //var cRouter = require('./routes/page/categories.route');
-app.use('/danhsach',require('./routes/page/categories.route'));
+app.use('/',require('./routes/page/categories.route'));
 
-//app.use('/categories', require('./routes/category.route'));
+
 //app.use('/admin/categories', require('./routes/admin/category.route'));
 
 app.listen(3000, () => {

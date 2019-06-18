@@ -2,30 +2,38 @@ var db = require('../db/db-connection');
 
 module.exports = {
   all: () => {
-    return db.load('select * from categories');
+    return db.load('select * from newsonline.categories');
   },
 
   allWithDetails: () => {
     return db.load(`
-      select c.id, c.Ten, count(t.id) as num_of_tag
-      from categories c left join tag t on c.id = t.idCat
-      group by c.id, c.Ten
+    SELECT c.id AS idCat, c.Ten, count(tt.id) as num_of_tintuc 
+    FROM newsonline.categories c 
+    left join newsonline.tintuc tt on tt.idCat= c.id
+    group by c.id
     `);
+  },
+  allByCat: idCat => {
+    return db.load(`select * from newsonline.categories where id = ${idCat}`);
   },
 
   single: id => {
-    return db.load(`select * from categories where id = ${id}`);
+    return db.load(`select * from newsonline.categories where id = ${id}`);
+  },
+
+  singleName: Ten => {
+    return db.load(`select * from newsonline.categories where TenKhongDau = '${Ten}'`);
   },
 
   add: entity => {
-    return db.add('categories', entity);
+    return db.add('newsonline.categories', entity);
   },
 
   update: entity => {
-    return db.update('categories', 'id', entity);
+    return db.update('newsonline.categories', 'id', entity);
   },
 
   delete: id => {
-    return db.delete('categories', 'id', id);
+    return db.delete('newsonline.categories', 'id', id);
   }
 };
