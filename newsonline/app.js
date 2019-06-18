@@ -25,7 +25,8 @@ app.set('view engine', 'hbs');
 
 app.get('/',require('./routes/home/home.route'));
 //var cRouter = require('./routes/page/categories.route');
-app.use('/',require('./routes/page/categories.route'));
+app.use('/categories',require('./routes/page/categories.route'));
+//app.use('/post',require('./routes/page/posts.route'));
 
 
 //app.use('/admin/categories', require('./routes/admin/category.route'));

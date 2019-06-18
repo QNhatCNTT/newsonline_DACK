@@ -27,8 +27,8 @@ module.exports = {
     return db.load(`select * from newsonline.tintuc where idCat = ${idCat} limit ${limit} offset ${offset}`);
   },
 
-  countByCat: catId => {
-    return db.load(`select count(*) as total from newsonline.tintuc where CatID = ${catId}`);
+  countByCat: idCat => {
+    return db.load(`select count(*) as total from newsonline.tintuc where idCat = ${idCat}`);
   },
 
   pageByTag: (idTag, limit, offset) => {
@@ -37,6 +37,14 @@ module.exports = {
 
   countByTag: idTag => {
     return db.load(`select count(*) as total from newsonline.tintuc where idTag = ${idTag}`);
+  },
+
+  singleIdTag : id =>{
+    return db.load(`select idTag from newsonline.tintuc where id = ${id}`);
+  },
+
+  singleIdCat : id =>{
+    return db.load(`select idCat from newsonline.tintuc where id = ${id}`);
   },
 
   single: id => {

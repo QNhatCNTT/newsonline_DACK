@@ -25,6 +25,8 @@ module.exports = {
     return db.load(`select * from newsonline.categories where TenKhongDau = '${Ten}'`);
   },
 
+  
+
   add: entity => {
     return db.add('newsonline.categories', entity);
   },

@@ -1,17 +1,24 @@
 var express = require('express');
-var categoriesModel = require('../../models/tintuc.model');
+var postsModel = require('../../models/tintuc.model');
+var categoriesModel = require('../../models/categories.model');
+var tagsModel = require('../../models/tag.model');
 
 
 var router = express.Router();
 
 router.get('/:id', (req, res) => {
-  var id = req.params.id;
-  categoriesModel.allByCat(id)
-  .then(rows => {
+  var idPost = req.params.id;
+  postsModel.single(idPost)
+  .then(async rows => {
     console.log(rows[0])
-    
-    res.render('page/categories', {
-      categories: rows[0]
+    var categories = await categoriesModel.single(rows[0].idCat)
+    var tags = await tagsModel.single(rows[0].idTag)
+    console.log(categories.Ten)
+    console.log(tags.Ten)
+    res.render('page/post', {
+      posts: rows[0],
+      categories: categories,
+      tags: tags
     });
   }).catch(err => {
     console.log(err);
@@ -19,19 +26,5 @@ router.get('/:id', (req, res) => {
   });
 })
 
-router.get('/tags/:idTag',async(req, res) => {
-  var idTag = req.params.idTag;
-
-  var tags = await tagsModel.allByTag(idTag)
-  var tags = tags[0]
-    
-  var categories = await categoriesModel.single(tags.idCat)
-  var categories =  categories[0]
-  console.log(categories.Ten)
-  res.render('page/tags', {
-    tags,
-    categories
-  }
-)})
 
 module.exports = router;

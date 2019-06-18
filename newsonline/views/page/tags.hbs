@@ -5,7 +5,7 @@
 			<div class="f2-s-1 p-r-30 m-tb-6">
 				<ol class="breadcrumb lighten-4">
 				  <li class="breadcrumb-item f1-s-3 cl5"><a href="/">Home</a></li>
-				  <li class="breadcrumb-item active f1-s-3 cl5" aria-current="page">{{categories.Ten}}</li>
+				  <li class="breadcrumb-item active f1-s-3 cl5" aria-current="page"><a href="/categories/{{categories.TenKhongDau}}">{{categories.Ten}}</a></li>
 				  <li class="breadcrumb-item active f1-s-3 cl5" aria-current="page">{{tags.Ten}}</li>
 				</ol>
 			</div>
@@ -36,19 +36,19 @@
 						{{#each this.posts}}
 							<!-- Item post -->
 							<div class="flex-wr-sb-s p-t-40 p-b-15 how-bor2">
-								<a href="blog-detail-01.html" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
+								<a href="/categories/post/{{posts.id}}" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
 									<img src="images/post-01.jpg" alt="IMG">
 								</a>
 
 								<div class="size-w-9 w-full-sr575 m-b-25">
 									<h5 class="p-b-12">
-										<a href="blog-detail-01.html" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
+										<a href="/categories/post/{{posts.id}}" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
 											{{TieuDe}} 
 										</a>
 									</h5>
 
 									<div class="cl8 p-b-18">
-										<a href="blog-list-01.html" class="f1-s-4 cl8 hov-cl10 trans-03">
+										<a href="/categories/post/{{posts.id}}" class="f1-s-4 cl8 hov-cl10 trans-03">
 												{{tags.Ten}}
 										</a>
 
@@ -111,35 +111,13 @@
 							</div>
 
 							<ul class="p-t-35">
+								{{#each this.categories}}
 								<li class="how-bor3 p-rl-4">
-									<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-										{{tags.Ten}}
+									<a href="/categories/{{categories.TenKhongDau}}" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+										{{Ten}}
 									</a>
 								</li>
-
-								<li class="how-bor3 p-rl-4">
-									<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-										Phim ảnh
-									</a>
-								</li>
-
-								<li class="how-bor3 p-rl-4">
-									<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-										Xe
-									</a>
-								</li>
-
-								<li class="how-bor3 p-rl-4">
-									<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-										Du lịch
-									</a>
-								</li>
-
-								<li class="how-bor3 p-rl-4">
-									<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-										Ẩm thực
-									</a>
-								</li>
+								{{/each}}
 							</ul>
 						</div>
 
@@ -159,37 +137,11 @@
 							</div>
 
 							<div class="flex-wr-s-s m-rl--5">
+								{{#each this.tags}}
 								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Mobile
+									{{Ten}}
 								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Internet
-								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Esport
-								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Mua xe
-								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Lái xe
-								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Phim Chiếu Rạp
-								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Game Shows
-								</a>
-
-								<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-									Món ngon
-								</a>
+								{{/each}}
 							</div>	
 						</div>
 					</div>
